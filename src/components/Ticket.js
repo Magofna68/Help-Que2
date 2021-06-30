@@ -5,10 +5,12 @@ function Ticket(props){
   
   return (
     <React.Fragment>
-      <h3>3a</h3>
-      <h3>{props.location} and {props.names}</h3>
-      <p><em>{props.issue}</em></p>
-      <hr/>
+       <div onClick = {() => props.whenTicketClicked(props.id)}>
+        { /* We add a div with an onClick function. Don't forget to close out the div below! */}
+        <h3>{props.location} - {props.names}</h3>
+        <p><em>{props.issue}</em></p>
+        <hr/>
+      </div>
     </React.Fragment>
   );
 }

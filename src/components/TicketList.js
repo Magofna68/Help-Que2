@@ -9,11 +9,13 @@ function TicketList (props) {
 		<React.Fragment>
         <hr/>
         {/* Loop through the list passed down from TicketControl. */}
-        {props.ticketList.map((ticket, index) =>
-          <Ticket names={ticket.names}
+        {props.ticketList.map((ticket) =>
+          <Ticket 
+            whenTicketClicked = { props.onTicketSelection}
+            names={ticket.names}
             location={ticket.location}
             issue={ticket.issue}
-            key={index}/>
+            key={ticket.id}/>
         )}
       </React.Fragment>
 	);
@@ -22,6 +24,8 @@ function TicketList (props) {
 // Add propTypes for ticketList.
 TicketList.propTypes ={
   ticketList: PropTypes.array
+  onTicketSelection: PropTypes.func
+
 
 };
 
