@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Header";
+// import Header from "./Header";
 import TicketControl from "./TicketControl";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   // const name2 = "Haley";
   return (
     <React.Fragment>
-      <Header/>
+      {/* <Header/> */}
       <TicketControl/>
     </React.Fragment>
   );
