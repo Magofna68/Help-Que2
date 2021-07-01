@@ -13,14 +13,16 @@ function NewTicketForm (props) {
 	return (
 		<React.Fragment>
 			<ReusableForm
-				formSubmissionHandler ={handleNewTicketFormSubmission}
+				formSubmissionHandler = {handleNewTicketFormSubmission}
 				buttonText="help"/>
+				<h1>{props.moneyValue}</h1>
 		</React.Fragment>
 	);
 }
 
 NewTicketForm.propTypes = {
-  onNewTicketCreation: PropTypes.func
+  onNewTicketCreation: PropTypes.func,
+	moneyValue: PropTypes.string
 };
 
 export default NewTicketForm;
