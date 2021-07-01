@@ -14,8 +14,8 @@ class TicketControl extends React.Component {
   }
   
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
+    this.setState(oldState => ({
+      formVisibleOnPage: !oldState.formVisibleOnPage
     }));
   }
   handleAddingNewTicketToList = (newTicket) => {

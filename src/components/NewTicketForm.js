@@ -1,6 +1,7 @@
 import React from "react";
 import { v4 } from 'uuid';
 import PropTypes from "prop-types";
+import ReusableForm from "./ReusableForm";
 
 function NewTicketForm (props) {
 
@@ -11,23 +12,13 @@ function NewTicketForm (props) {
 
 	return (
 		<React.Fragment>
-			<form onSubmit ={handleNewTicketFormSubmission}>
-				<input
-					type='text'
-					name='names'
-					placeholder='pair names'/>
-				<input
-					type='text'
-					name='location'
-					placeholder='location'/>
-				<textarea
-					name='issue'
-					placeholder='describe your issue'/>
-				<button type='submit'>add ticket</button>
-			</form>
+			<ReusableForm
+				formSubmissionHandler ={handleNewTicketFormSubmission}
+				buttonText="help"/>
 		</React.Fragment>
 	);
 }
+
 NewTicketForm.propTypes = {
   onNewTicketCreation: PropTypes.func
 };
