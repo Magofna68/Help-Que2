@@ -14,3 +14,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+input, textarea {
+  width: 50%;
+  padding: 12px 20px;
+  margin-bottom: 2%;
+}
+
+button {
+  margin-bottom: 1%;
+  border-radius: 9%;
+  padding: 1%;
+  width: 14em;
+  color: black;
+  font-weight: 900;
+  background-color: aquamarine;
+}
