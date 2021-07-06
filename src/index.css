@@ -8,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 
 code {
@@ -15,18 +16,28 @@ code {
     monospace;
 }
 
-input, textarea {
+input {
   width: 50%;
   padding: 12px 20px;
   margin-bottom: 2%;
+}
+
+textarea {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 2%;
 }
 
 button {
   margin-bottom: 1%;
   border-radius: 9%;
   padding: 1%;
-  width: 14em;
+  width: 19em;
   color: black;
   font-weight: 900;
+  background-color: aqua;
+}
+
+button:hover {
   background-color: aquamarine;
 }
