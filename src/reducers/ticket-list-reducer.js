@@ -1,8 +1,10 @@
+import * as c from './../actions/ActionTypes';
+
 export default (state = {}, action) => {
   // destructure the other properties from the action object into the variables names, location and issue.
   const { names, location, issue, id, type } = action;
   switch (type) {
-    case 'ADD_TICKET':
+    case c.ADD_TICKET:
       // Next, we state that our switch will be based on the action.type. Because the action parameter takes an object, the reducer needs to look at the action's type property to determine the action it should take.
       return Object.assign({}, state, {
         // In order for this to work correctly, Object.assign() must take three arguments:
@@ -17,7 +19,7 @@ export default (state = {}, action) => {
           id: id
         }
       });
-    case 'DELETE_TICKET':
+    case c.DELETE_TICKET:
       let newState = { ...state };
       delete newState[id];
       return newState;
