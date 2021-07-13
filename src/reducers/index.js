@@ -10,10 +10,4 @@ const rootReducer = combineReducers({
   firestore: firestoreReducer
 });
 
-
-const rootReducer = combineReducers({
-  formVisibleOnPage: formVisibleReducer,
-  masterTicketList: ticketListReducer
-});
-
 export default rootReducer;
