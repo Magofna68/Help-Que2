@@ -18,6 +18,32 @@ class TicketControl extends React.Component {
       money: "billion dollars"
     };
   }
+
+  componentDidMount() {
+    this.waitTimeUpdateTimer = setInterval(() =>
+      this.updateTicketElapsedWaitTime(),
+      60000
+    );
+  }
+
+  // We won't be using this method for our help queue update - but it's important to see how it works.
+  // componentDidUpdate() {
+  //   console.log("component updated!");
+  // }
+
+  componentWillUnmount() {
+    clearInterval(this.waitTimeUpdateTimer);
+  }
+
+  updateTicketElapsedWaitTime = () => {
+    const { dispatch } = this.props;
+    Object.values(this.props.masterTicketList).forEach(ticket => {
+      const newFormattedWaitTime = ticket.timeOpen.fromNow(true);
+      const action = a.updateTime(ticket.id, newFormattedWaitTime);
+      dispatch(action);
+    });
+  }
+
   handleDeletingTicket = (id) => {
     const { dispatch } = this.props;
     const action = a.deleteTicket(id);
@@ -70,34 +96,34 @@ class TicketControl extends React.Component {
     const selectedTicket = this.props.masterTicketList[id];
     this.setState({ selectedTicket: selectedTicket });
   }
-}
-render() {
-  let currentlyVisibleState = null;
-  let buttonText = null;
-  if (this.state.editing) {
-    currentlyVisibleState = <EditTicketForm ticket={this.state.selectedTicket} onEditTicket={this.handleEditingTicketInList} />
-    buttonText = "Return to Ticket List";
-    // Note that we also need to change the next conditional to an else if. If it remained an if statement, that conditional would also be met since there is a selectedTicket - which means that the TicketDetail component would show even if editing is set to true.
-  } else if (this.state.selectedTicket != null) {
-    currentlyVisibleState = <TicketDetail
-      ticket={this.state.selectedTicket}
-      onClickingDelete={this.handleDeletingTicket}
-      onClickingEdit={this.handleEditClick} />;
-    buttonText = "return to ticket list";
-  } else if (this.props.formVisibleOnPage) {
-    currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} moneyValue={this.state.money} />;
-    buttonText = "Return to Ticket List";
-  } else {
-    currentlyVisibleState = <TicketList ticketList={this.props.masterTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;
-    buttonText = "add ticket";
-  }
-  return (
-    <React.Fragment>
-      {currentlyVisibleState}
-      <button onClick={this.handleClick}>{buttonText}</button>
-    </React.Fragment>
-  );
-}
+
+  render() {
+    let currentlyVisibleState = null;
+    let buttonText = null;
+    if (this.state.editing) {
+      currentlyVisibleState = <EditTicketForm ticket={this.state.selectedTicket} onEditTicket={this.handleEditingTicketInList} />
+      buttonText = "Return to Ticket List";
+      // Note that we also need to change the next conditional to an else if. If it remained an if statement, that conditional would also be met since there is a selectedTicket - which means that the TicketDetail component would show even if editing is set to true.
+    } else if (this.state.selectedTicket != null) {
+      currentlyVisibleState = <TicketDetail
+        ticket={this.state.selectedTicket}
+        onClickingDelete={this.handleDeletingTicket}
+        onClickingEdit={this.handleEditClick} />;
+      buttonText = "return to ticket list";
+    } else if (this.props.formVisibleOnPage) {
+      currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} moneyValue={this.state.money} />;
+      buttonText = "Return to Ticket List";
+    } else {
+      currentlyVisibleState = <TicketList ticketList={this.props.masterTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;
+      buttonText = "add ticket";
+    }
+    return (
+      <React.Fragment>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </React.Fragment>
+    );
+  };
 }
 
 TicketControl.propTypes = {

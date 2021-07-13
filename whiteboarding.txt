@@ -1,0 +1,42 @@
+WHITEBOARDING:
+
+Write a function to get the 2nd highest salary from an array:
+________________________________________________________________
+
+only salary
+coming in as integers
+no ordered
+
+// I could use a method sectionSort()  --  run a loop through the array to pull out numbers to sort
+
+sectionSort(salArray) -- each index 0 to index 1 start ordering them from smallest to largest
+
+// the array would then be ordered from smallest to largest
+salArray[salArray.length-1] = answer
+
+// loop through to get actual value: loop will go through length -1 return the last value
+
+sectionSort(salArray)
+(let i = 0; i = salArray.length-1; i ++) {
+  return ;
+}
+
+_________________________________________________________________
+// In the salary array, it contains only positive integers, unsorted.
+
+function findSecondHighestSalary = (salaryArray) => {
+  let highestSal = 0;
+  let lowerSal = 0;
+
+  salaryArray = salaryArray.sort(function(a, b){return a-b}); // ascending order
+
+  for (let i = 0; i <= salaryArray.length; i ++) { // [29, 5, 10, 29, 9] => [5, 9, 10, 29, 29]
+    if (salaryArray[i] > highestSal) {
+     lowerSal = highestSal; // 0, 5
+     highestSal = salaryArray[i]; // 5, 29
+    } else if (salaryArray[i] > lowerSal && salaryArray[i] < highestSal ) {
+      lowerSal = salaryArray[i];
+    }
+  }
+ return lowerSal;
+}
