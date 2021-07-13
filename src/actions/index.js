@@ -9,18 +9,18 @@ export const toggleForm = () => ({
   type: c.TOGGLE_FORM
 });
 
-export const addTicket = (ticket) => {
-  const { names, location, issue, formattedWaitTime, timeOpen, id } = ticket;
-  return {
-    type: c.ADD_TICKET,
-    names: names,
-    location: location,
-    issue: issue,
-    formattedWaitTime,
-    timeOpen: timeOpen,
-    id: id
-  }
-}
+// export const addTicket = (ticket) => {
+//   const { names, location, issue, formattedWaitTime, timeOpen, id } = ticket;
+//   return {
+//     type: c.ADD_TICKET,
+//     names: names,
+//     location: location,
+//     issue: issue,
+//     formattedWaitTime,
+//     timeOpen: timeOpen,
+//     id: id
+//   }
+// }
 
 export const updateTime = (id, formattedWaitTime) => ({
   type: c.UPDATE_TIME,
